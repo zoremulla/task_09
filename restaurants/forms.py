@@ -1,7 +1,6 @@
 from django import forms
 from .models import Restaurant
 from django.contrib.auth.models import User
-
 class RestaurantForm(forms.ModelForm):
     class Meta:
         model = Restaurant
@@ -14,13 +13,12 @@ class RestaurantForm(forms.ModelForm):
 class SignupForm(forms.ModelForm):
     class Meta:
         model = User
-        fields= ['Username','First_name', 'Last_name', 'Email', 'Password']
+        fields= ['username', 'password', 'first_name', 'last_name']
 
         widgets={
-        'Password': forms.PasswordInput(),
+                'password': forms.PasswordInput(),
         }
 class SigninForm(forms.Form):
-    class Meta:
-        Username= forms.CharField(required=True)
-        Password= forms.CharField(required=True, widget=forms.PasswordInput())
+        username= forms.CharField(required=True)
+        password= forms.CharField(required=True, widget=forms.PasswordInput())
         

@@ -1,19 +1,24 @@
 from django.shortcuts import render, redirect
 from .models import Restaurant
-from .forms import RestaurantForm,Signupform,SigninForm
+from .forms import RestaurantForm
+from .forms import SignupForm
+from .forms import SigninForm
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.models import User
+
+
 
 def signup(request):
-    form=Signupform()
+    form=SignupForm()
     if request.method=='POST':
-        form=Signupform(request.POST)
+        form=SignupForm(request.POST)
         if form.is_valid():
             user=form.save(commit=False)
 
             user.set_password(user.password)
             user.save()
 
-            Login(request, user)
+            login(request, user)
             return redirect("signin")
             #                ^ when the user successfully logs in 
     context={
@@ -42,7 +47,7 @@ def signin(request):
 def signout(request):
     logout(request)
     
-    return redirect('signout')
+    return redirect('signin')
 
 def restaurant_list(request):
     context = {

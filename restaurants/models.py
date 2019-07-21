@@ -11,9 +11,4 @@ class Restaurant(models.Model):
 
     def __str__(self):
     	return self.name
-class User(models.Model):
-    Username= models.CharField(max_length=70)
-    First_name=models.CharField(max_length=120)
-    Last_name=models.CharField(max_length=120)
-    Email=models.EmailField(max_length=60)
-    Password=models.CharField(max_length=11)
+   

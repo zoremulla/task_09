@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
-{% block title %}Create{% endblock title %}
+{% block title %}Signin{% endblock title %}
 
 {% block content %}
     
@@ -13,7 +13,7 @@
         <form action="{% url 'signin' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{form|crispy}}
-            <input type="submit" value="Create" class="btn btn-outline-success">
+            <input type="submit" value="Sign in" class="btn btn-outline-success">
         </form>
     </p>
   </div>
